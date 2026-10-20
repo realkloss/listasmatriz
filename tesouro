@@ -1,0 +1,39 @@
+
+import random
+
+mapa = [["." for c in range(5)] for l in range(5)]
+
+tesouro_linha = random.randint(0, 4)
+tesouro_coluna = random.randint(0, 4)
+
+tentativas = 0
+
+print("-CAÇA AO TESOURO-")
+print("Escolha uma linha e uma coluna de 0 a 4.")
+
+while True:
+    l = int(input("Digite a linha: "))
+    c = int(input("Digite a coluna: "))
+
+    if l < 0 or l > 4 or c < 0 or c > 4:
+        print("Posição inválida! Digite valores de 0 a 4.")
+        continue
+
+    tentativas += 1
+
+    if l == tesouro_linha and c == tesouro_coluna:
+        print("Parabéns! Você encontrou o tesouro!")
+        print("Tentativas:", tentativas)
+        break
+
+    distancia = max(
+        abs(l - tesouro_linha),
+        abs(c - tesouro_coluna)
+    )
+
+    if distancia == 1:
+        print("Muito perto!")
+    elif distancia <= 3:
+        print("Perto!")
+    else:
+        print("Longe!")
