@@ -1,0 +1,30 @@
+
+tabuleiro = [["." for coluna in range(8)] for linha in range(8)]
+
+linha = int(input("Digite a linha do cavalo (0 a 7): "))
+coluna = int(input("Digite a coluna do cavalo (0 a 7): "))
+
+if linha < 0 or linha > 7 or coluna < 0 or coluna > 7:
+    print("Posição inválida!")
+else:
+    
+    movimentos = [
+        (-2, -1), (-2, 1),
+        (2, -1), (2, 1),
+        (-1, -2), (-1, 2),
+        (1, -2), (1, 2)
+    ]
+
+
+    tabuleiro[linha][coluna] = "C"
+
+  
+    for mov_linha, mov_coluna in movimentos:
+        nova_linha = linha + mov_linha
+        nova_coluna = coluna + mov_coluna
+
+        if 0 <= nova_linha < 8 and 0 <= nova_coluna < 8:
+            tabuleiro[nova_linha][nova_coluna] = "*"
+
+    for linha_tabuleiro in tabuleiro:
+        print(" ".join(linha_tabuleiro))
